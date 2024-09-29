@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,500;1,100&family=Rubik:wght@300;400;500;600;700&display=swap');
+
+/* ------------------ Initiate ------------------ */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --first-color: #032340;
+    --second-color: #72C1F2;
+    --gray-color: rgba(255, 255, 255, 0.5);
+}
+
+.grayColor{
+    color: var(--gray-color);
+    font-size: .8em;
+    font-weight: 100;
+}
+
+body{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100vh;
+    background-color: var(--first-color);
+    color: var(--second-color);
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Rubik', sans-serif;
+    padding: 50px 25px;
+}
+
+/* ------------------ Header ------------------ */
+
+header h1{
+    font-size: 2.6em;
+    font-weight: 500;
+}
+
+/* ------------------ Main Section ------------------ */
+
+#mainSection{
+    display: grid;
+    grid-template-columns: 1fr 100px 100px 100px;
+    gap: 20px;
+    padding: 40px 0;
+}
+
+
+#mainSection input{
+    background-color: transparent;
+    border: 1px solid var(--second-color);
+    font-size: 1.1em;
+    padding: 15px;
+    color: var(--second-color);
+}
+
+#mainSection input:focus, #mainSection button:focus{
+    outline: 0;
+}
+
+#mainSection input#submite, #mainSection input#coppyBtn{
+    cursor: pointer;
+    transition: .4s all;
+}
+
+#mainSection input#submite{
+    color: var(--first-color);
+    background-color: var(--second-color);
+}
+
+#mainSection input#submite:hover, #mainSection input#coppyBtn:hover{
+    color: var(--second-color);
+    background-color: var(--first-color);
+}
+
+#mainSection input#coppyBtn:hover{
+    color: var(--first-color);
+    background-color: var(--second-color);
+}
+/* ------------------ More Settings ------------------ */
+
+#moreSettings button#settingBtn{
+    color: inherit;
+    background-color: transparent;
+    border: 0px;
+    display: block;
+    cursor: pointer;
+    padding: 5px 0;
+    font-size: 1em;
+}
+
+#moreSettings button#settingBtn i#chevron{
+    transition: 1s;
+    padding: 5px;
+    margin-left: 15px;
+}
+
+
+#moreSettings button#settingBtn i#chevron.rotate180{
+    transform: rotate(180deg);
+}
+
+
+#moreSettings .settingsContainer{
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+    /* border: 1px solid red; */
+}
+
+
+#moreSettings .settingsContainer .wrapper{
+    transform: translateY(-100%);  
+    position: absolute;
+    width: 100%;
+}
+
+#moreSettings .settingsContainer .wrapper.hide{
+    animation: hideSettings 1s forwards;
+}
+
+#moreSettings .settingsContainer .wrapper.show{
+    animation: showSettings 1s forwards;
+}
+
+
+
+@keyframes showSettings {
+    0%{
+        transform: translateY(-100%);  
+    }
+
+    100%{
+        transform: translateY(0);  
+    }
+}
+
+@keyframes hideSettings {
+    0%{
+        transform: translateY(0);  
+    }
+
+    100%{
+        transform: translateY(-100%);  
+    }
+}
+
+#moreSettings .settingsContainer .wrapper > div{
+    display: grid;
+    grid-template-columns: 200px 200px;
+    grid-template-rows: 45px 45px;
+    gap: 20px 50px;
+    padding: 20px 0;
+}
+
+#moreSettings .settingsContainer .wrapper div div.field{
+    /* border: 1px solid yellow; */
+    position: relative;
+    display: flex;
+    gap: 20px;
+}
+
+#moreSettings .settingsContainer .wrapper div div.field .checkBox, 
+#moreSettings .settingsContainer .wrapper div div.field div.styledBox{
+    width: 20px;
+    height: 20px;
+}
+
+#moreSettings .settingsContainer .wrapper div div.field .checkBox{
+    cursor: pointer;
+    opacity: 0;
+    z-index: 99;
+}
+
+#moreSettings .settingsContainer .wrapper div div.field div.styledBox{
+    position: absolute;
+    background-color: var(--gray-color);
+    cursor: pointer;
+}
+
+#moreSettings .settingsContainer .wrapper div div.field label{
+    cursor: pointer;
+    color: var(--gray-color);
+
+    /* prevent to select labels */
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#moreSettings .settingsContainer .wrapper div div.field .checkBox:checked ~ .styledBox{
+    background-color: var(--second-color);
+}
+#moreSettings .settingsContainer .wrapper div div.field .checkBox:checked ~ label{
+    color: var(--second-color);
+}
+
+#defaultId{
+    background-color: transparent;
+    border: 0px;
+    cursor: pointer;
+    padding: 5px 15px 5px 0;
+    transition: .4s color;
+}
+
+#defaultId:hover{
+    color: var(--second-color);
+}
+
+
+/* devices */
+
+@media only screen and (min-width: 1900px) {
+    body {
+        /* background-color: red; */
+        font-size: 1.2em;
+    }
+
+    #moreSettings .settingsContainer .wrapper > div{
+        grid-template-columns: 300px 300px;
+    }
+}
+
+@media only screen and (min-width: 2500px) {
+
+    body .container{
+        width: 100%;
+        position: absolute;
+        transform: translateY(-50%);
+        top: 50%;
+    }
+    
+    body {
+        position: relative;
+        width: 100vw;
+        font-size: 2em;
+        width: 75%;
+    }
+
+    #moreSettings .settingsContainer .wrapper > div{
+        grid-template-columns: 400px 400px;
+    }
+}
